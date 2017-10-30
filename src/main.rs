@@ -1,22 +1,13 @@
 use std::io;
 use std::io::Write;
+use std::io::BufRead;
 use std::collections::HashSet;
 
 fn main() {
+    let stdin = io::stdin();
     let mut read_set = HashSet::new();
 
-    loop {
-        let mut line = String::new();
-
-        match io::stdin().read_line(&mut line) {
-            Err(e) => panic!(e),
-            Ok(n) => {
-                if n == 0 {
-                    return; // EOF
-                }
-            }
-        };
-
+    for line in stdin.lock().lines().map(|l| l.unwrap() + "\n") {
         if read_set.contains(&line) {
             continue;
         };
