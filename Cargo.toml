@@ -1,0 +1,6 @@
+[package]
+name = "huniq"
+version = "0.1.0"
+authors = ["Alex Hamlin <alex@alexhamlin.co>"]
+
+[dependencies]
