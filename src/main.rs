@@ -17,14 +17,16 @@ fn main() {
             }
         };
 
-        if !read_set.contains(&line) {
-            match io::stdout().write(line.as_bytes()) {
-                Err(ref e) if e.kind() == io::ErrorKind::BrokenPipe => return,
-                Err(e) => panic!(e),
-                Ok(_) => {
-                    read_set.insert(line);
-                }
-            };
-        }
+        if read_set.contains(&line) {
+            continue;
+        };
+
+        match io::stdout().write(line.as_bytes()) {
+            Err(ref e) if e.kind() == io::ErrorKind::BrokenPipe => return,
+            Err(e) => panic!(e),
+            Ok(_) => {
+                read_set.insert(line);
+            }
+        };
     }
 }
