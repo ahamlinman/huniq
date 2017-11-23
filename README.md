@@ -2,8 +2,10 @@
 =======
 
 `huniq` writes deduplicated lines from standard input to standard output. It is
-differentiated from the standard `uniq` by not requiring sorted input, at the
-cost of O(n) memory use.
+differentiated from the standard `uniq` by not requiring sorted input.
+Internally, it uses Rust's standard [HashSet] type to accomplish this.
+
+[HashSet]: https://doc.rust-lang.org/std/collections/struct.HashSet.html
 
 Installation
 ------------
